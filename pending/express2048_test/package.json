@@ -1,0 +1,9 @@
+{
+  "name": "app2048",
+  "description": "2048 APP by Express",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x"
+  }
+}
