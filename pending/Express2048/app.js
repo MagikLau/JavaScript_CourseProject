@@ -36,10 +36,12 @@ app.use(session({
 
 app.use(express.static(__dirname+'/public'));
 
-app.get('/start', function(req, res) {
+app.get('/', function(req, res) {
     res.sendfile('./public/2048.html');
 });
-
+// app.get('/start', function(req, res) {
+//     res.sendfile('./public/2048.html');
+// });
 app.use('/', index);
 app.use('/users', users);
 

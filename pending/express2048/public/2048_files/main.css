@@ -655,6 +655,21 @@ hr {
   text-align: center;
   float: right; }
 
+.user-button {
+  display: inline-block;
+  margin-left: 5px;
+  background: #50688f;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  float: right; }
+
 .game-explanation {
   margin-top: 50px; }
 
