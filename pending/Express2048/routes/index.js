@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var usr=require('dao/dbConnect');
+// var usr=require('dao/dbConnect');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -13,18 +13,7 @@ router.get('/', function(req, res) {
     res.render('index', { title: 'HOME',test:res.locals.islogin});
 });
 
-router.get('/start', function(req, res) {
-    if(req.cookies.islogin){
-        req.session.islogin = req.cookies.islogin;
-    }
-    if(req.session.islogin){
-        res.locals.islogin = req.session.islogin;
-    }
-    var userbtn = document.querySelector(".user-button");
-    userbtn.style.display=="none";
-    res.render('/public/2048.html', { title: '2048'+userbtn,test:res.locals.islogin});
-});
-
+/*
 router.route('/login')
     .get(function(req, res) {
         if(req.session.islogin){
@@ -84,6 +73,6 @@ router.route('/reg')
             res.send('注册成功');
 
         });
-    });
+    });*/
 
 module.exports = router;

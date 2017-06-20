@@ -1,1 +1,3 @@
-npm start
+@echo off
+node app.js
+pause
