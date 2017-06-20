@@ -642,6 +642,7 @@ hr {
 
 .restart-button {
   display: inline-block;
+  position: relative;
   background: #8f7a66;
   border-radius: 3px;
   padding: 0 20px;
@@ -650,10 +651,23 @@ hr {
   height: 40px;
   line-height: 42px;
   cursor: pointer;
-  display: block;
   text-align: center;
   float: right; }
 
+.rank-button{
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  cursor: pointer;
+  text-align: center;
+  float:right; }
 
 .game-explanation {
   margin-top: 50px; }
@@ -690,17 +704,30 @@ hr {
     margin-bottom: 10px; }
 
   .game-intro {
-    width: 55%;
+    width: 20%;
     display: block;
     box-sizing: border-box;
     line-height: 1.65; }
 
   .restart-button {
-    width: 42%;
-    padding: 0;
-    display: block;
-    box-sizing: border-box;
-    margin-top: 2px; }
+    /*position: relative;*/
+    width: 28%;
+    height: 32px; line-height: 32px; margin-left: 5px; margin-bottom: 5px
+    /*display: block;*/
+    /*box-sizing: border-box;*/
+    /*margin-top: 2px;*/
+    /*float: right;*/
+  }
+
+  .rank-button {
+    /*position: relative;*/
+    width: 15%;
+    height: 32px; line-height: 32px; margin-left: 5px; margin-bottom: 5px
+    /*display: block;*/
+    /*box-sizing: border-box;*/
+    /*margin-top: 2px;*/
+    /*float: right;*/
+  }
 
   .game-container {
     margin-top: 10px;

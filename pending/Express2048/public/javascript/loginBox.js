@@ -105,12 +105,12 @@ $(function ($) {
                     loginUser.score = data.score;
                     loginInfo.loginUser = loginUser;
                     loginInfo.loginState = true;
-                    // sessionStorage.loginInfo = loginInfo;
-                    // console.log("sessionStorage.loginInfo: "+sessionStorage.loginInfo);
-                    // "UserID: "+loginInfo.loginUser.userid+
-                    alert("User: "+loginInfo.loginUser.username+", welcome back.\nYour best score in server is "+loginUser.score);
 
+                    alert("User: "+loginInfo.loginUser.username+", welcome back.\nYour best score in server is "+loginUser.score+"\nNow update your local score to server...");
                     $("#logoutbtn").text("User "+loginInfo.loginUser.username+" . Log out.");
+                    sessionStorage.setItem("username",loginUser.username);
+
+                    $(".best-container").text(loginUser.score);
                     console.log("After login switchButton-------"+loginInfo.loginUser.username);
                     switchButton();
                     $("#txtPwd").val("");
@@ -173,10 +173,10 @@ $(function ($) {
     }).on('click', function () {
         loginInfo.loginUser = null;
         switchButton();
-        // $("#loginbtn").show();
-        // $("#registerbtn").show();
-        // $("#logoutbtn").text("Log out.").hide();
         alert("User "+loginUser.username+" Log out. Good bye~");
+        window.localStorage.setItem("bestScore",0);
+        sessionStorage.setItem("user",null);
+        $(".restart-button")[0].click();
     });
     //关闭
     $(".close_btn").hover(function () { $(this).css({ color: 'black' }) }, function () { $(this).css({ color: '#999' }) }).on('click', function () {
