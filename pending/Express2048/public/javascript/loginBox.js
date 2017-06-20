@@ -3,19 +3,20 @@ var loginInfo = { loginUser: null, loginState: false };
 
 var switchButton =  function () {
     // console.log("switchButton-------"+loginInfo.loginUser);
-    if( loginInfo.loginState === false ){
+    if( loginInfo.loginState === false || loginInfo.loginUser === null ){
         //根据是否已登陆来设置默认隐藏
         console.log("switchButton-------"+loginInfo.loginState);
         $("#logoutbtn").text("Log out.").hide();
         $("#loginbtn").show();
-        $("#registbtn").show();
+        $("#registerbtn").show();
     }else{
         console.log("switchButton-------"+loginInfo.loginUser.username);
         $("#logoutbtn").text("User "+loginUser.username+" . Log out.").show();
         $("#loginbtn").hide();
-        $("#registbtn").hide();
+        $("#registerbtn").hide();
     }
     $("#LoginBox").fadeOut("fast");
+    $("#RegisterBox").fadeOut("fast");
     $("#mask").css({ display: 'none' });
 };
 
@@ -66,7 +67,7 @@ $(function ($) {
         $("#LoginBox").fadeIn("slow");
     });
     //按钮的透明度
-    $("#registbtn").hover(function () {
+    $("#registerbtn").hover(function () {
         $(this).stop().animate({
             opacity: '1'
         }, 600);
@@ -77,7 +78,7 @@ $(function ($) {
     }).on('click', function () {
         $("body").append("<div id='mask'></div>");
         $("#mask").addClass("mask").fadeIn("slow");
-        $("#RegistBox").fadeIn("slow");
+        $("#RegisterBox").fadeIn("slow");
     });
     $("#loginSubmitBtn").hover(function () {
         $(this).stop().animate({
@@ -123,7 +124,7 @@ $(function ($) {
 
 
     });
-    $("#RegisteSubmitBtn").hover(function () {
+    $("#RegisterSubmitBtn").hover(function () {
         $(this).stop().animate({
             opacity: '1'
         }, 600);
@@ -131,6 +132,35 @@ $(function ($) {
         $(this).stop().animate({
             opacity: '0.8'
         }, 1000);
+    }).on('click', function () {
+        var username = $("#RegisterName").val();
+        var password = $("#RegisterPwd").val();
+        var checkPwd = $("#RegisterCheckPwd").val();
+        if( password !== checkPwd ){
+            alert("两次输入的密码不同！请重新输入 "+password+" "+checkPwd);
+            $("#RegisterPwd").val("");
+            $("#RegisterCheckPwd").val("");
+            return;
+        }
+        //向服务器发起注册请求
+        $.ajax({
+            type: "post",
+            url: "register",
+            dataType: "JSON",
+            data: "type=register&username="+username+"&password="+password,
+            success: function(data){
+                if(data.result === "true"){
+                    alert("Register success. Please login.");
+                    switchButton();
+                    $("#RegisterName").val("");
+                    $("#RegisterPwd").val("");
+                    $("#RegisterCheckPwd").val("");
+                }
+                else {
+                    alert("Register failed. Please check your input and try again!");
+                }
+            }
+        });
     });
     $("#logoutbtn").hover(function () {
         $(this).stop().animate({
@@ -142,15 +172,16 @@ $(function ($) {
         }, 1000);
     }).on('click', function () {
         loginInfo.loginUser = null;
-        $("#loginbtn").show();
-        $("#registbtn").show();
-        $("#logoutbtn").text("Log out.").hide();
+        switchButton();
+        // $("#loginbtn").show();
+        // $("#registerbtn").show();
+        // $("#logoutbtn").text("Log out.").hide();
         alert("User "+loginUser.username+" Log out. Good bye~");
     });
     //关闭
     $(".close_btn").hover(function () { $(this).css({ color: 'black' }) }, function () { $(this).css({ color: '#999' }) }).on('click', function () {
         $("#LoginBox").fadeOut("fast");
-        $("#RegistBox").fadeOut("fast");
+        $("#RegisterBox").fadeOut("fast");
         $("#mask").css({ display: 'none' });
     });
 });

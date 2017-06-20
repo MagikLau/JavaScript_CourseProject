@@ -37,6 +37,15 @@ app.post('/setBestScore', function(req, res) {
     }
 });
 
+app.post('/register', function(req, res) {
+    if( req.body.type === "register" ){
+        user_manager.register(req.body.username,req.body.password,function(msg){
+            res.send(msg);
+        });
+    }
+    // user_manager.closeDB();
+});
+
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');

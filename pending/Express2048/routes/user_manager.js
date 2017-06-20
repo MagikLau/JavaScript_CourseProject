@@ -69,6 +69,26 @@ var setBestScore = function ( username, score, fn ){
 };
 exports.setBestScore = setBestScore;
 
+var register = function (username, password, fn) {
+    console.log("register: "+username+" "+password);
+    var sql = 'INSERT INTO jsuser(username, password, score) VALUE(?, ?, 0)';
+    var  sqlParams = [ username, password ];
+    console.log('-------------------------Execute SQL-------------------------------');
+    connection.query(sql,sqlParams,function (err, result) {
+        if(err){
+            console.log('[Register ERROR] - ',err.message);
+            return;
+        }
+        console.log('-------------------------Register-------------------------------');
+
+        if(result.length===0) {
+            fn({result:"false"});
+        }else fn( {   result:"true"});
+    });
+
+};
+
+exports.register = register;
 
 var closeDB = function () {
     connection.end();
