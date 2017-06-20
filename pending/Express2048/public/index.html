@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://gabrielecirulli.github.io/2048/ -->
+<html lang="en" manifest="cache.appcache"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>2048</title>
+
+    <link href="./stylesheets/main.css" rel="stylesheet" type="text/css">
+    <link rel="Stylesheet" type="text/css" href="./stylesheets/loginBox.css" />
+
+    <!--<link rel="shortcut icon" href="http://gabrielecirulli.github.io/2048/favicon.ico">-->
+    <!--<link rel="apple-touch-icon" href="http://gabrielecirulli.github.io/2048/meta/apple-touch-icon.png">-->
+    <!--<link rel="apple-touch-startup-image" href="http://gabrielecirulli.github.io/2048/meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> &lt;!&ndash; iPhone 5+ &ndash;&gt;-->
+    <!--<link rel="apple-touch-startup-image" href="http://gabrielecirulli.github.io/2048/meta/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> &lt;!&ndash; iPhone, retina &ndash;&gt;-->
+
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+
+    <!--<meta name="HandheldFriendly" content="True">-->
+    <!--<meta name="MobileOptimized" content="320">-->
+    <!--<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">-->
+    <!--<meta name="format-detection" content="telephone=no">-->
+
+</head>
+<body>
+<table >
+
+</table>
+<div id="LoginBox">
+    <!--LoginBox-->
+    <div class="row1">
+        Login<a href="javascript:void(0)" title="Close window" class="close_btn" id="closeBtn">×</a>
+    </div>
+    <div class="row">
+        <span class="inputBox">
+          <input type="text" id="txtName" placeholder="Username" />
+        </span>
+        <!--<a href="javascript:void(0)" title="提示" class="warning" id="warn">*</a>-->
+    </div>
+    <div class="row">
+        <span class="inputBox">
+          <input type="password" id="txtPwd" placeholder="Password" />
+        </span>
+        <!--<a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>-->
+    </div>
+    <div class="row">
+        <a href="#" id="loginSubmitBtn">Login</a>
+    </div>
+    <!--LoginBox-->
+</div>
+<div id="RegisterBox">
+    <!--RegistBox-->
+    <div class="row1">
+        Regist<a href="javascript:void(0)" title="Close window" class="close_btn" id="RegisterCloseBtn">×</a>
+    </div>
+    <div class="row">
+
+    <span class="inputBox">
+      <input type="text" id="RegisterName" placeholder="Username" />
+    </span>
+        <!--<a href="javascript:void(0)" title="提示" class="warning" id="warn">*</a>-->
+    </div>
+    <div class="row">
+        <span class="inputBox">
+            <input type="password" id="RegisterPwd" placeholder="Password" />
+        </span>
+        <!--<a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>-->
+        <span class="inputBox">
+            <input type="password" id="RegisterCheckPwd" placeholder="Reply Password" />
+        </span>
+    </div>
+    <div class="row">
+        <a href="#" id="RegisterSubmitBtn">Register</a>
+    </div>
+    <!--RegistBox-->
+</div>
+<div class="container">
+    <a class="user-button" id="loginbtn" >Login</a>
+    <a class="user-button" id="registerbtn">Register</a>
+    <a class="user-button" id="logoutbtn">Log out</a>
+
+    <br/>
+    <div class="heading">
+        <h1 class="title">2048</h1>
+        <div class="scores-container">
+            <div class="score-container">0</div>
+            <div class="best-container">4416</div>
+        </div>
+    </div>
+
+    <div class="above-game">
+        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <a class="restart-button">New Game</a>
+    </div>
+
+
+    <div class="game-container">
+        <div class="game-message">
+            <p></p>
+            <!--游戏结束的提示-->
+            <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+                <div class="score-sharing"></div>
+                <div class="mailing-list">
+                    <!-- MailChimp Signup Form -->
+                    <form action="http://gabrielecirulli.us8.list-manage.com/subscribe/post?u=991201206817cfb4e4247ed6c&amp;id=7928ea817b" method="post" name="mc-embedded-subscribe-form" class="mailing-list-form" target="_blank">
+                        <strong>Get email updates from Gabriele</strong>
+
+                        <input type="email" value="" name="EMAIL" class="mailing-list-email-field" placeholder="Your email address" spellcheck="false">
+
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -9999px;">
+                            <input type="text" name="b_991201206817cfb4e4247ed6c_7928ea817b" value="">
+                        </div>
+
+                        <input type="submit" value="Go" name="subscribe" class="mailing-list-subscribe-button">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+        </div>
+
+        <div class="tile-container">
+            <div class="tile tile-2 tile-position-3-2 tile-new">
+                <div class="tile-inner">2</div>
+            </div>
+            <div class="tile tile-2 tile-position-4-2 tile-new">
+                <div class="tile-inner">2</div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <p>
+        Created by <a href="http://gabrielecirulli.com/" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+    </p>
+</div>
+
+<script src="./javascript/jquery-1.8.3.min.js"></script>
+<script src="./javascript/bind_polyfill.js"></script>
+<script src="./javascript/classlist_polyfill.js"></script>
+<script src="./javascript/animframe_polyfill.js"></script>
+<script src="./javascript/keyboard_input_manager.js"></script>
+<script src="./javascript/html_actuator.js"></script>
+<script src="./javascript/grid.js"></script>
+<script src="./javascript/tile.js"></script>
+<script src="./javascript/local_storage_manager.js"></script>
+<script src="./javascript/game_manager.js"></script>
+<script src="./javascript/application.js"></script>
+<script src="./javascript/loginBox.js"></script>
+
+<script>
+
+</script>
+
+</body></html>
